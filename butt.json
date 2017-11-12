@@ -1,0 +1,27 @@
+{
+    "startingValue": {
+        "fart": "50"
+    },
+    "entries": [
+        {
+            "amount": 10,
+            "category": "coffee",
+            "fart": 45
+        },
+        {
+            "amount": 20,
+            "category": "lunch",
+            "fart": 40
+        },
+        {
+            "amount": "4",
+            "category": "pee",
+            "fart": 16
+        },
+        {
+            "amount": "3",
+            "category": "test",
+            "fart": 17
+        }
+    ]
+}

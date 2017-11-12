@@ -1,0 +1,31 @@
+{
+    "startingValue": {
+        "fart": 17
+    },
+    "entries": [
+        {
+            "amount": "3",
+            "category": "coffee"
+        },
+        {
+            "amount": "6",
+            "category": "gas"
+        },
+        {
+            "amount": "7",
+            "category": "cards"
+        },
+        {
+            "amount": "4",
+            "category": "lego"
+        },
+        {
+            "amount": "8",
+            "category": "games"
+        },
+        {
+            "amount": "5",
+            "category": "food"
+        }
+    ]
+}
