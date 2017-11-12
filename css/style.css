@@ -1,3 +1,35 @@
+body {
+	background-color: #377BB5;
+}
+
+.myBGColor {
+	background-color: #377BB5;
+	border-style: none;
+			color: #7cbbf0;
+}
+
+.myBGColor2 {
+	background-color: #7cbbf0;
+	border-style: none;
+		color: #7cbbf0;
+}
+
+.myBGColor3 {
+	background-color: #1b5688;
+		border-style: none;
+		color: #fff;
+		font-weight: 200;
+
+}
+
+.myBorderColor {
+	border-color: #1b5688;
+}
+
+.myTextColor {
+	color: #7cbbf0;
+}
+
 .hidden {
 	display: none;
 }
