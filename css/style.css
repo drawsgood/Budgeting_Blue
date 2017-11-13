@@ -54,6 +54,10 @@ body {
 	font-weight: 100;
 }
 
+.activatedStyling {
+		background-color: #7cbbf0;
+		color: #fff;
+}
 
 #openBTN i {
 	display: block;

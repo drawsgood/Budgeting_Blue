@@ -8,10 +8,12 @@ var myToggs = false;
 $("#openBTN").click(function(){
 
 	if (myToggs == false) {
-		$("#openBTN").html("<i style='background-color: #7cbbf0; color: #fff;' class='fa fa-close fa-large' aria-hidden='true'></i>");
+		$("#openBTN").addClass( "activatedStyling" );
+		$("#openBTN").html("<i class='fa fa-close fa-large' aria-hidden='true'></i>");
 		myToggs = true;
 		console.log(myToggs);
 	} else {
+		$("#openBTN").removeClass( "activatedStyling" );
 		$("#openBTN").html("<i style='margin-top: 14px;' class='fa fa-plus fa-large' aria-hidden='true'></i>");
 		myToggs = false;
 		console.log(myToggs);
