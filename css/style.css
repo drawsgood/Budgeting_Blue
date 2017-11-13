@@ -41,26 +41,27 @@ body {
 	box-shadow: none;
 }
 
-.openBTN_Inner {
-	width: 80px;
-	height: 80px;
+
+#openBTN {
+	width: 82px;
+	height: 82px;
 	border-radius: 40px;
 	border-style: solid;
 	border-width: 2px;
 	border-color: #7cbbf0;
 	margin: 0 auto;
+	font-size: 52px;
+	font-weight: 100;
 }
 
-.openBTN_Inner:hover {
+#openBTN:hover {
 		background-color: #7cbbf0;
 		color: #fff;
 
 }
 
-.openBTN_Inner .myPlus {
-	font-size: 80px;
-	font-weight: 200;
-	position: relative;
-	top: -27px;
-	left: 14px;
+#openBTN i {
+	display: block;
+	text-align: center;
+	margin: 13% auto;
 }
