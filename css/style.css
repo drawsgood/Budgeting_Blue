@@ -54,7 +54,7 @@ body {
 	font-weight: 100;
 }
 
-#openBTN:hover {
+#openBTN:hover, #openBTN:active {
 		background-color: #7cbbf0;
 		color: #fff;
 
