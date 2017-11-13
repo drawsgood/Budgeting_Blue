@@ -17,15 +17,26 @@
 	<title>Budget</title>
 </head>
 <body>
-	<span id="clock"></span>
 	<div class="container myBGColor" style="margin-top:20px;">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
-				<div class="panel panel-primary myBGColor">
-					<div class="panel-heading">
-						<h3 class="panel-title" style="font-size: 24px; text-align: center;">Bossy Budgeter</h3>
+				<div class="panel panel-primary myBGColor removeBoxShadow">
+					<div id="collapseMe" style="height: 100px"></div>
+					<div style="padding: 0px 15px 0px 15px;" class="row" id="totalBox">
+						<div class="col-md-12">
+							<div style="border-radius: 10px">
+								<div style="border-radius: 10px;"> 
+									<p style="text-align: center">Remaining Budget</p>
+									<p style="color: #fff;" id="total"></p>
+								</div>
+							</div>
+						</div>
 					</div>
-					<div class="panel-body">
+					<div class="row">
+							<div id="openBTN" class="openBTN_Inner"><span class="myPlus">+</span></div>
+						</div>
+					</div>
+					<div id="hideshowForm" class="panel-body">
 						<form id="myForm" action="addExpense.php" method="POST">
 							<div class="form-group">
 								<label class="myTextColor">Amount</label>
@@ -41,24 +52,14 @@
 						</form>
 					</div>
 					<div style="padding: 0px 15px 0px 15px" class="row">
-						<div id="myTable" class="col-md-12">
-								<h4>Today's Spending</h4>
-								<table style="border: none;" class="table myBGColor" id="list">
+						<div id="myTable" style="margin: 0 auto; width: 240px; border-radius: 20px;">
+								<p style="text-align: center;">Today's Spending</p>
+								<table style="border: solid;" class="table myBGColor" id="list">
 									<tr style="border: none;" class="myBorderColor">
 										<td style="font-weight: bold; border: none;">Cost</td>
-										<td style="font-weight: bold; border: none;">Category</td>
+										<td style="font-weight: bold; border: none; text-align: right;">Category</td>
 									</tr>
 								</table>
-						</div>
-					</div>
-					<div style="padding: 0px 15px 0px 15px;" class="row">
-						<div class="col-md-12">
-							<h4>Remaining budget for the day:</h4>
-							<div id="tableToggle" class="panel panel-default myBGColor3" style="border-radius: 10px">
-								<div class="panel-body myBGColor3" style="border-radius: 10px;"> 
-									<p id="total"></p>
-								</div>
-							</div>
 						</div>
 					</div>
 					<!--<div style="padding: 0px 15px 0px 15px" class="row">

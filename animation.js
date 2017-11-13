@@ -1,7 +1,10 @@
 $(document).ready(function(){
 
-$("#tableToggle").click(function(){
-    $("#myTable").slideToggle("fast");
+$("#hideshowForm").hide();
+
+$("#openBTN").click(function(){
+	$("#collapseMe").slideToggle("fast");
+    $("#hideshowForm").slideToggle("fast");
 });
 
 });
