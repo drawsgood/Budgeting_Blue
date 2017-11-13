@@ -64,3 +64,8 @@ body {
 	text-align: center;
 	margin: 13% auto;
 }
+
+.centerIcon {
+	display: block;
+	text-align: center;
+}
