@@ -1,14 +1,10 @@
 {
     "startingValue": {
-        "fart": 46.15
+        "fart": 47
     },
     "entries": [
         {
-            "amount": "3",
-            "category": "coffee"
-        },
-        {
-            "amount": ".85",
+            "amount": "3.00",
             "category": "coffee"
         }
     ]

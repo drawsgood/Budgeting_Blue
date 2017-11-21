@@ -20,7 +20,7 @@
 	        
 					    }
 
-					   	header("refresh:1; url=index.html", true, 303);
+					   	header("Location: index.html", true, 303);
 						exit();
 				  }
 		      else  
@@ -49,7 +49,7 @@
 		                //fwrite($handle, '[]');
 		                //fclose($handle);
 
-		                header("refresh:1; url=index.html", true, 303);
+		                header("Location: index.html", true, 303);
 						exit();
 		           }  
 		           else  
