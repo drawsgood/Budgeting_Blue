@@ -1,24 +1,24 @@
 <?php
+if(isset($_POST["delete"])){
+    $index = $_POST["delete"];
 
-if(isset($_POST['index'])){
+    if(file_exists('current.json')){
+        $current_data = file_get_contents('current.json');
+        $array_data = json_decode($current_data, true);
 
-    $index = $_POST['index'];
+        if(isset($array_data['entries'][$index])){
+            unset($array_data['entries'][$index]); // remove entry
+            $array_data['entries'] = array_values($array_data['entries']); // reindex
 
-    $data = json_decode(file_get_contents("current.json"), true);
+            $final_data = json_encode($array_data, JSON_PRETTY_PRINT);
+            file_put_contents('current.json', $final_data);
 
-    if(isset($data['entries'][$index])){
-
-        $amount = $data['entries'][$index]['amount'];
-
-        // restore balance
-        $data['startingValue']['fart'] += $amount;
-
-        unset($data['entries'][$index]);
-
-        $data['entries'] = array_values($data['entries']);
-
-        file_put_contents("current.json", json_encode($data, JSON_PRETTY_PRINT));
+            echo "Deleted index $index"; // return response
+        } else {
+            echo "Index $index not found";
+        }
+    } else {
+        echo "current.json missing";
     }
-
 }
 ?>
