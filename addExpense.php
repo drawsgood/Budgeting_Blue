@@ -1,4 +1,35 @@
 <?php
+if(isset($_POST["delete"])) {
+
+    $index = $_POST["delete"]; // index of item to remove
+
+    if(file_exists('current.json')) {
+
+        $current_data = file_get_contents('current.json');
+        $array_data = json_decode($current_data, true);
+
+        if(isset($array_data['entries'][$index])) {
+
+            $amount = $array_data['entries'][$index]['amount'];
+
+            // add amount back to balance
+            $array_data['startingValue']['fart'] += $amount;
+
+            // remove entry
+            unset($array_data['entries'][$index]);
+
+            // reindex array
+            $array_data['entries'] = array_values($array_data['entries']);
+
+            $final_data = json_encode($array_data, JSON_PRETTY_PRINT);
+            file_put_contents('current.json', $final_data);
+        }
+
+        header("Location: index.html", true, 303);
+        exit();
+    }
+}
+
 	 if(isset($_POST["submit"]))  
 		 {  
 		      if(empty(trim($_POST["amount"]))) 
@@ -16,7 +47,7 @@
 
 
 					    foreach($json as $key => $item) {
-					         file_put_contents('current.json', "{\"startingValue\": {\"fart\": 50}}");	
+					         file_put_contents('current.json', "{\"startingValue\": {\"fart\": 150}}");	
 	        
 					    }
 
