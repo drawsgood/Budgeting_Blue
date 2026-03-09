@@ -1,6 +1,17 @@
 {
     "startingValue": {
-        "fart": 150
+        "fart": 130
     },
-    "entries": []
+    "entries": [
+        {
+            "amount": "5",
+            "category": "test",
+            "date": "2026-03-09"
+        },
+        {
+            "amount": "10",
+            "category": "bones",
+            "date": "2026-03-09"
+        }
+    ]
 }

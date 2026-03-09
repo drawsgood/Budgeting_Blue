@@ -1,18 +1,18 @@
 <?php
-if(isset($_POST["delete"])) {
+$dailyBudget = 150; // daily starting budget
 
+// DELETE ENTRY
+if(isset($_POST["delete"])) {
     $index = $_POST["delete"]; // index of item to remove
 
     if(file_exists('current.json')) {
-
         $current_data = file_get_contents('current.json');
         $array_data = json_decode($current_data, true);
 
         if(isset($array_data['entries'][$index])) {
-
             $amount = $array_data['entries'][$index]['amount'];
 
-            // add amount back to balance
+            // add amount back to startingValue
             $array_data['startingValue']['fart'] += $amount;
 
             // remove entry
@@ -30,63 +30,62 @@ if(isset($_POST["delete"])) {
     }
 }
 
-	 if(isset($_POST["submit"]))  
-		 {  
-		      if(empty(trim($_POST["amount"]))) 
-		      {  
-		            header("Location: index.html");
-					exit();
-		      }
+// SUBMIT NEW ENTRY
+if(isset($_POST["submit"])) {
+    if(empty(trim($_POST["amount"]))) {  
+        header("Location: index.html");
+        exit();
+    }
 
+    if($_POST["category"] == 'clearMe') {  
+        // reset the JSON file completely
+        file_put_contents('current.json', json_encode([
+            "startingValue" => ["fart" => $dailyBudget],
+            "entries" => []
+        ], JSON_PRETTY_PRINT));
 
-		      if(($_POST["category"]) == 'clearMe') 
-		      {  
+        header("Location: index.html", true, 303);
+        exit();
+    } else {  
+        if(file_exists('current.json')) {  
+            $current_data = file_get_contents('current.json');  
+            $array_data = json_decode($current_data, true);
 
-				$file = file_get_contents("current.json");
-				$json = json_decode($file, true);
+            // Add today's entry with date
+            $extra = array(  
+                 'amount'   => $_POST['amount'],
+                 'category' => $_POST['category'],
+                 'date'     => date("Y-m-d")   // <-- today's date
+            );
 
+            // Update starting value
+            $newFart = isset($array_data['startingValue']['fart']) ? $array_data['startingValue']['fart'] - $_POST['amount'] : $dailyBudget - $_POST['amount'];
+            $array_data['entries'][] = $extra;
+            $array_data['startingValue']['fart'] = $newFart;
 
-					    foreach($json as $key => $item) {
-					         file_put_contents('current.json', "{\"startingValue\": {\"fart\": 150}}");	
-	        
-					    }
+            $final_data = json_encode($array_data, JSON_PRETTY_PRINT);  
+            file_put_contents('current.json', $final_data);
 
-					   	header("Location: index.html", true, 303);
-						exit();
-				  }
-		      else  
-		      {  
-		           if(file_exists('current.json'))  
-		           {  
-		                $current_data = file_get_contents('current.json');  
-		                $array_data = json_decode($current_data, true);
-		                $extra = array(  
-		                     'amount'               =>     $_POST['amount'],
-		                     'category'               =>     $_POST['category'],
-		                );
-		                $extra_2 = array(
-		                	'fart'               =>     $_POST['fart'] - $_POST['amount']
-		                );
-		                $array_data['entries'][] = $extra;
-		                $array_data['startingValue'] = $extra_2;
-		                $final_data = json_encode($array_data, JSON_PRETTY_PRINT);  
-		                if(file_put_contents('current.json', $final_data))  
-		                {  
-		                     $message = "<label class='text-success'>File Appended Success fully</p>";  
-		                }
+            header("Location: index.html", true, 303);
+            exit();
+        } else {  
+            // If file doesn't exist, create it
+            $array_data = [
+                "startingValue" => ["fart" => $dailyBudget - $_POST['amount']],
+                "entries" => [
+                    [
+                        'amount' => $_POST['amount'],
+                        'category' => $_POST['category'],
+                        'date' => date("Y-m-d")
+                    ]
+                ]
+            ];
+            $final_data = json_encode($array_data, JSON_PRETTY_PRINT);
+            file_put_contents('current.json', $final_data);
 
-		                // $filename = 'myNewJSON.json';
-		                //$handle = fopen($filename, 'w+');
-		                //fwrite($handle, '[]');
-		                //fclose($handle);
-
-		                header("Location: index.html", true, 303);
-						exit();
-		           }  
-		           else  
-		           {  
-		                $error = 'JSON File not exits';  
-		           }  
-		      }  
-		  }
+            header("Location: index.html", true, 303);
+            exit();
+        }  
+    }  
+}
 ?>
