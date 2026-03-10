@@ -56,13 +56,17 @@
 					<div style="padding: 30px 15px 0px 15px" class="row">
 						<div id="myTable" style="margin: 0 auto; width: 100%; border-radius: 20px;">
 								<p style="text-align: center;">Today's Spending</p>
-								<table style="border: solid;" class="table myBGColor" id="list">
-									<tr style="border: none;" class="myBorderColor">
-										<td style="font-weight: bold; border: none;">Cost</td>
-										<td style="font-weight: bold; border: none; text-align: right;">Category</td>
-										<td style="font-weight: bold; border: none; text-align: right;">Date</td>
+								<table class="table myBGColor" id="list">
+									<thead>
+									<tr class="myBorderColor">
+									<td style="font-weight:bold;">Cost</td>
+									<td style="font-weight:bold;text-align:right;">Category</td>
+									<td style="font-weight:bold;text-align:right;">Date</td>
+									<td style="font-weight:bold;text-align:center;">Delete</td>
 									</tr>
-								</table>
+									</thead>
+									<tbody id="tableBody"></tbody>
+									</table>
 						</div>
 					</div>
 					<!--<div style="padding: 0px 15px 0px 15px" class="row">
